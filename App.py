@@ -11,6 +11,9 @@ from imblearn.over_sampling import SMOTE
 # View
 st.set_page_config(page_title="Lung Cancer Prediction", layout="wide")
 st.title('Lung Cancer Prediction')
+st.write('''
+The Lung Cancer Prediction machine learning model is developed to predict the likelihood of an individual having lung cancer based on various demographic and health - related factors. The dataset used for training and testing the model is obtained from Kaggle, specifically from the following source: https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer
+         ''')
 st.image(image=Image.open('Lung Cancer.jpg'), width=600)
 
 st.header('Upload CSV File')
