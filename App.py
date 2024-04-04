@@ -10,7 +10,7 @@ from imblearn.over_sampling import SMOTE
 
 # View
 st.set_page_config(page_title="Lung Cancer Prediction", layout="wide")
-st.title('Project : Lung Cancer Prediction')
+st.title('Lung Cancer Prediction')
 st.image(image=Image.open('Lung Cancer.jpg'), width=600)
 
 st.header('Upload CSV File')
