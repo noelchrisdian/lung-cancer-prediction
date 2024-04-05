@@ -86,14 +86,17 @@ if st.button('Predict'):
     with open('lung_cancer.pkl', 'rb') as file:
         pick = pickle.load(file)
 
-    prediction = pick.predict(data)
-    result = ['Based on the input provided, the prediction suggests the presence of Lung Cancer' if pred ==
-              1 else 'Based on the input provided, the prediction indicates no signs of Lung Cancer' for pred in prediction]
-    st.subheader('Prediction :')
-    output = str(result[0])
-    with st.spinner('Please wait for a second'):
-        time.sleep(2)
-        st.success(f'{output}')
+    predictions = pick.predict(data)
+    for prediction in predictions:
+        st.subheader('Prediction Result :')
+        with st.spinner('Analyzing the provided input...'):
+            time.sleep(2)
+            if prediction == 1:
+                st.warning(
+                    '🚨 Attention: The analysis suggests a potential risk of Lung Cancer. Please consult with a healthcare professional for further evaluation')
+            else:
+                st.success(
+                    '✅ Good news! The analysis indicates no significant signs of Lung Cancer based on the provided input')
 
 # Data Processing
 data = pd.read_csv('Data Processing.csv')
