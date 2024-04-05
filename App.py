@@ -93,7 +93,7 @@ if st.button('Predict'):
             time.sleep(2)
             if prediction == 1:
                 st.warning(
-                    '🚨 Attention: The analysis suggests a potential risk of Lung Cancer. Please consult with a healthcare professional for further evaluation')
+                    '🚨 Attention : The analysis suggests a potential risk of Lung Cancer. Please consult with a healthcare professional for further evaluation!')
             else:
                 st.success(
                     '✅ Good news! The analysis indicates no significant signs of Lung Cancer based on the provided input')
