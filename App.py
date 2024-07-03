@@ -14,7 +14,7 @@ st.title('Lung Cancer Prediction')
 st.write('''
 The Lung Cancer Prediction machine learning model is developed to predict the likelihood of an individual having lung cancer based on various demographic and health - related factors. The dataset used for training and testing the model is obtained from Kaggle, specifically from the following source: https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer
          ''')
-st.image(image=Image.open('Lung Cancer.jpg'), width=600)
+st.image(image=Image.open('Lung Cancer.jpg'), width=350)
 
 st.header('Upload CSV File')
 uploadedFile = st.file_uploader('', type=['csv'])
