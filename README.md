@@ -8,7 +8,7 @@ Lung Cancer Prediction is a machine learning application designed to predict the
 - **Interactive UI :** Built with Streamlit, providing a user-friendly interface for inputting clinical features and receiving predictions
 
 ## Installation :
-Follow these steps to set up and run the application locally:
+Follow these steps to set up and run the application locally :
 
 1. Clone the repository :
 `git clone https://github.com/GreenGlasses16/lung-cancer-prediction.git`
