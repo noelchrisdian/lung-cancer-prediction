@@ -16,67 +16,47 @@ The Lung Cancer Prediction machine learning model is developed to predict the li
          ''')
 st.image(image=Image.open('Lung Cancer.jpg'), width=350)
 
-st.header('Upload CSV File')
-uploadedFile = st.file_uploader('', type=['csv'])
-if uploadedFile is not None:
-    inputData = pd.read_csv(uploadedFile)
-else:
-    st.header('User Input')
+def inputProcessing():
+    col1, col2 = st.columns(2)
+    with col1:
+        gender = st.selectbox('Gender', ('Male', 'Female'))
+        smoke = st.radio('Do you smoke?', ('Yes', 'No'))
+        yellowFinger = st.radio('Have you noticed any yellow discoloration specifically on your fingers or nails?', ('Yes', 'No'))
+        anxiety = st.radio('Have you experienced anxiety specifically related to your breathing or health?', ('Yes', 'No'))
+        peerPressure = st.radio('Have you experienced any pressure from peers or family members to engage in smoking or other behaviors that may affect your lung health?', ('Yes', 'No'))
+        chronicDisease = st.radio('Do you have a history of chronic respiratory conditions such as asthma or COPD?', ('Yes', 'No'))
+        fatigue = st.radio('Have you experienced unexplained fatigue or weakness, especially accompanied by other respiratory symptoms?', ('Yes', 'No'))
+        allergy = st.radio('Do you have any allergies, particularly to substances that may affect lung health?', ('Yes', 'No'))
+    with col2:
+        age = st.number_input('Age', min_value=10, max_value=100)
+        wheezing = st.radio('Have you experienced wheezing, particularly when breathing in or out?', ('Yes', 'No'))
+        alcohol = st.radio('Do you consume alcohol regularly?', ('Yes', 'No'))
+        cough = st.radio('Have you experienced persistent coughing, especially if it produces blood or lasts for several weeks?', ('Yes', 'No'))
+        shortBreath = st.radio('Have you experienced shortness of breath that is worsening over time or is not relieved by rest?', ('Yes', 'No'))
+        swallow = st.radio('Do you have any difficulty swallowing, particularly if accompanied by other respiratory symptoms?', ('Yes', 'No'))
+        chestPain = st.radio('Have you experienced chest pain or tightness, especially if it is persistent or worsens with breathing or exertion?', ('Yes', 'No'))
 
-    def inputProcessing():
-        col1, col2 = st.columns(2)
-        with col1:
-            gender = st.selectbox('Gender', ('Male', 'Female'))
-            smoke = st.radio('Do you smoke?', ('Yes', 'No'))
-            yellowFinger = st.radio(
-                'Have you noticed any yellow discoloration specifically on your fingers or nails?', ('Yes', 'No'))
-            anxiety = st.radio(
-                'Have you experienced anxiety specifically related to your breathing or health?', ('Yes', 'No'))
-            peerPressure = st.radio(
-                'Have you experienced any pressure from peers or family members to engage in smoking or other behaviors that may affect your lung health?', ('Yes', 'No'))
-            chronicDisease = st.radio(
-                'Do you have a history of chronic respiratory conditions such as asthma or COPD?', ('Yes', 'No'))
-            fatigue = st.radio(
-                'Have you experienced unexplained fatigue or weakness, especially accompanied by other respiratory symptoms?', ('Yes', 'No'))
-            allergy = st.radio(
-                'Do you have any allergies, particularly to substances that may affect lung health?', ('Yes', 'No'))
-        with col2:
-            age = st.number_input('Age', min_value=10, max_value=100)
-            wheezing = st.radio(
-                'Have you experienced wheezing, particularly when breathing in or out?', ('Yes', 'No'))
-            alcohol = st.radio(
-                'Do you consume alcohol regularly?', ('Yes', 'No'))
-            cough = st.radio(
-                'Have you experienced persistent coughing, especially if it produces blood or lasts for several weeks?', ('Yes', 'No'))
-            shortBreath = st.radio(
-                'Have you experienced shortness of breath that is worsening over time or is not relieved by rest?', ('Yes', 'No'))
-            swallow = st.radio(
-                'Do you have any difficulty swallowing, particularly if accompanied by other respiratory symptoms?', ('Yes', 'No'))
-            chestPain = st.radio(
-                'Have you experienced chest pain or tightness, especially if it is persistent or worsens with breathing or exertion?', ('Yes', 'No'))
+    mappingCategory = {'Yes': 1, 'No': 0}
 
-        mappingCategory = {'Yes': 1, 'No': 0}
-
-        data = {
-            'GENDER': 1 if gender == 'Male' else 0,
-            'AGE': age,
-            'SMOKING': mappingCategory.get(smoke),
-            'YELLOW_FINGERS': mappingCategory.get(yellowFinger),
-            'ANXIETY': mappingCategory.get(anxiety),
-            'PEER_PRESSURE': mappingCategory.get(peerPressure),
-            'CHRONIC DISEASE': mappingCategory.get(chronicDisease),
-            'FATIGUE': mappingCategory.get(fatigue),
-            'ALLERGY': mappingCategory.get(allergy),
-            'WHEEZING': mappingCategory.get(wheezing),
-            'ALCOHOL CONSUMING': mappingCategory.get(alcohol),
-            'COUGHING': mappingCategory.get(cough),
-            'SHORTNESS OF BREATH': mappingCategory.get(shortBreath),
-            'SWALLOWING DIFFICULTY': mappingCategory.get(swallow),
-            'CHEST PAIN': mappingCategory.get(chestPain),
-        }
-        features = pd.DataFrame(data, index=[0])
-        return features
-
+    data = {
+        'GENDER': 1 if gender == 'Male' else 0,
+        'AGE': age,
+        'SMOKING': mappingCategory.get(smoke),
+        'YELLOW_FINGERS': mappingCategory.get(yellowFinger),
+        'ANXIETY': mappingCategory.get(anxiety),
+        'PEER_PRESSURE': mappingCategory.get(peerPressure),
+        'CHRONIC DISEASE': mappingCategory.get(chronicDisease),
+        'FATIGUE': mappingCategory.get(fatigue),
+        'ALLERGY': mappingCategory.get(allergy),
+        'WHEEZING': mappingCategory.get(wheezing),
+        'ALCOHOL CONSUMING': mappingCategory.get(alcohol),
+        'COUGHING': mappingCategory.get(cough),
+        'SHORTNESS OF BREATH': mappingCategory.get(shortBreath),
+        'SWALLOWING DIFFICULTY': mappingCategory.get(swallow),
+        'CHEST PAIN': mappingCategory.get(chestPain)
+    }
+    features = pd.DataFrame(data, index=[0])
+    return features
 
 inputData = inputProcessing()
 
