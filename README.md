@@ -21,8 +21,8 @@ Follow these steps to set up and run the application locally :
 ## Usage 
 After starting the application, open `http://localhost:8501` in your web browser. Enter the required clinical features through the provided form and submit to get a prediction on lung cancer presence
 
-## Dataset :
+## Dataset 
 The training dataset is sourced from Kaggle and can be found at [Lung Cancer Dataset](https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer)
 
-## Contributing :
+## Contributing 
 Contributions are welcome to enhance the application's features and performance. Please fork the repository and open a pull request with your changes
